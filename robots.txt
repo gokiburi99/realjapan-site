@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://realjapan-works.jp/sitemap.xml

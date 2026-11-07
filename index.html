@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://realjapan-works.jp/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="REAL JAPAN">
+<meta property="og:title" content="REAL JAPAN">
+<meta property="og:description" content="REAL JAPAN は、運送・産業廃棄物の現場で見落としがちな確認業務を、ソフトウェアで支えるサービスを運営しています。">
+<meta property="og:url" content="https://realjapan-works.jp/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230d6650'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='30' fill='%23fff' text-anchor='middle'%3ERJ%3C/text%3E%3C/svg%3E">
+<style>
+html{color-scheme:light}
+body{margin:0;font:14px system-ui,sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>REAL JAPAN</title>
+<meta name="description" content="REAL JAPAN は、運送・産業廃棄物の現場で見落としがちな確認業務を、ソフトウェアで支えるサービスを運営しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: 左寄せの一段組。冒頭で事業の考え方、続いて運営サービスを帳票の行のように並べ、最後に事業者情報の表 */
+:root {
+  --bg: #f4f6f5;
+  --surface: #ffffff;
+  --ink: #15201d;
+  --muted: #55625e;
+  --line: #d5ddda;
+  --accent: #0d6650;
+  --road: #b5650d;
+  --waste: #2f6f3a;
+  --font-display: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-body: "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101614; --surface: #17201d; --ink: #e6ece9; --muted: #9aa8a3; --line: #2a3632;
+    --accent: #4fc2a2; --road: #e3a052; --waste: #7cc588; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101614; --surface: #17201d; --ink: #e6ece9; --muted: #9aa8a3; --line: #2a3632;
+  --accent: #4fc2a2; --road: #e3a052; --waste: #7cc588; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap {
+  max-width: 1040px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Header */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+header.site {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+}
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.mark { font-family: var(--font-display); font-weight: 900; font-size: 19px; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
+.mark span { color: var(--accent); }
+nav.site { display: flex; gap: 22px; font-size: 14px; }
+nav.site a { color: var(--muted); text-decoration: none; }
+nav.site a:hover { color: var(--ink); }
+@media (max-width: 560px) { nav.site { gap: 14px; font-size: 13px; } }
+
+/* Hero */
+.hero { padding-block: 72px 56px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+.hero h1 {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(30px, 5.4vw, 52px); line-height: 1.32; letter-spacing: 0.01em;
+  margin: 14px 0 22px; text-wrap: balance; max-width: 18em;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p { max-width: 36em; color: var(--muted); margin: 0; font-size: 17px; }
+
+/* Section heading */
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+.sec-head { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: baseline; margin-bottom: 32px; }
+.sec-head h2 { font-family: var(--font-display); font-weight: 700; font-size: 24px; margin: 0; letter-spacing: 0.04em; }
+.sec-head p { margin: 0; color: var(--muted); max-width: 34em; }
+@media (max-width: 720px) { .sec-head { grid-template-columns: 1fr; gap: 8px; } }
+
+/* Services */
+.services { display: grid; gap: 20px; }
+.svc {
+  display: grid; grid-template-columns: 200px 1fr; gap: 24px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+  padding: 28px; border-top: 4px solid var(--svc);
+}
+.svc.road { --svc: var(--road); }
+.svc.waste { --svc: var(--waste); }
+.svc-id { display: flex; flex-direction: column; gap: 6px; }
+.svc-tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; color: var(--svc); }
+.svc-name { font-family: var(--font-display); font-weight: 900; font-size: 26px; line-height: 1.3; margin: 0; }
+.svc-for { font-size: 13px; color: var(--muted); }
+.svc-body { min-width: 0; }
+.svc-lead { font-size: 18px; font-weight: 700; margin: 0 0 12px; line-height: 1.6; }
+.svc-body > p { margin: 0 0 16px; color: var(--muted); }
+.facts { list-style: none; margin: 0 0 20px; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px 24px; }
+.facts li { padding-left: 14px; position: relative; font-size: 15px; }
+.facts li::before { content: ""; position: absolute; left: 0; top: 0.75em; width: 6px; height: 6px; background: var(--svc); border-radius: 1px; }
+.svc-foot { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; padding-top: 16px; border-top: 1px dashed var(--line); font-size: 14px; }
+.svc-foot .price { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.btn {
+  display: inline-block; padding: 9px 18px; border-radius: 4px; text-decoration: none;
+  background: var(--ink); color: var(--bg); font-weight: 700; font-size: 14px;
+}
+.btn:hover { background: var(--accent); }
+@media (max-width: 720px) { .svc { grid-template-columns: 1fr; gap: 14px; padding: 22px 18px; } }
+
+/* Approach */
+.approach { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.approach h3 { font-family: var(--font-display); font-weight: 700; font-size: 17px; margin: 0 0 8px; }
+.approach p { margin: 0; color: var(--muted); font-size: 15px; }
+@media (max-width: 760px) { .approach { grid-template-columns: 1fr; gap: 22px; } }
+
+/* Company table */
+.info { width: 100%; border-collapse: collapse; font-size: 15px; }
+.info th, .info td { text-align: left; vertical-align: top; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.info th { width: 200px; font-weight: 700; color: var(--muted); padding-right: 24px; }
+.info td { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 560px) {
+  .info th, .info td { display: block; width: auto; padding: 0; border: 0; }
+  .info th { padding-top: 14px; font-size: 13px; }
+  .info td { padding: 2px 0 14px; border-bottom: 1px solid var(--line); }
+}
+
+/* Media */
+.media-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.media-item { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.media-item:first-child { border-top: 1px solid var(--line); }
+.media-date { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.media-body { min-width: 0; }
+.media-outlet { font-weight: 700; }
+.media-title { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+.media-title a { color: var(--accent); }
+.media-note { margin: 16px 0 0; font-size: 13px; color: var(--muted); }
+@media (max-width: 720px) { .media-item { grid-template-columns: 1fr; gap: 4px; } }
+
+footer.site { border-top: 1px solid var(--line); padding-block: 28px 40px; font-size: 13px; color: var(--muted); }
+footer.site .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="mark" href="#top">REAL <span>JAPAN</span></a>
+    <nav class="site" aria-label="ページ内">
+      <a href="#services">サービス</a>
+      <a href="#approach">考え方</a>
+      <a href="#media">メディア掲載</a>
+      <a href="#company">事業者情報</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="eyebrow">REAL JAPAN · 運営サービスのご案内</div>
+    <h1>現場の「確認しそびれ」を、<em>仕組み</em>で減らす。</h1>
+    <p>REAL JAPAN は、運送と産業廃棄物の現場で起きやすい記録漏れや情報の見落としを、ソフトウェアで支える事業者です。現在、次の2つのサービスを運営しています。</p>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>運営サービス</h2>
+        <p>どちらも申し込み後すぐに使えるウェブサービスです。専用アプリのインストールは不要です。</p>
+      </div>
+
+      <div class="services">
+        <article class="svc road">
+          <div class="svc-id">
+            <span class="svc-tag">FOR TRUCKING</span>
+            <h3 class="svc-name">SafeDrive AI</h3>
+            <span class="svc-for">運送会社の安全管理担当者・運行管理者向け</span>
+          </div>
+          <div class="svc-body">
+            <p class="svc-lead">ヒヤリハットを、ドライバーがスマホに30秒話すだけで記録。</p>
+            <p>集まった記録を AI が分析し、危険が重なる場所や時間帯を管理者にお知らせします。記録は人事評価や処分に使わないことを規約で定め、報告しやすい職場づくりを支えます。</p>
+            <ul class="facts">
+              <li>音声入力によるヒヤリハット記録</li>
+              <li>AI による傾向分析とヒヤリハットマップ</li>
+              <li>荷待ち・荷役時間の記録と荷主別の集計</li>
+              <li>国交省様式の事故報告書PDFを作成</li>
+            </ul>
+            <div class="svc-foot">
+              <a class="btn" href="https://safedrive-ai.jp" target="_blank" rel="noopener">SafeDrive AI のサイトへ</a>
+              <span class="price">無料プランあり / 有料プラン 月額10,780円〜(税込)</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc waste">
+          <div class="svc-id">
+            <span class="svc-tag">FOR WASTE COMPLIANCE</span>
+            <h3 class="svc-name">産廃ウォッチ</h3>
+            <span class="svc-for">建設・製造・多店舗事業者の法務・環境管理担当者向け</span>
+          </div>
+          <div class="svc-body">
+            <p class="svc-lead">委託先の行政処分を、毎時の自動照合で見逃さない。</p>
+            <p>都県が公表する産業廃棄物処理業者への行政処分を毎時確認し、登録した委託先と許可番号(11桁)・名称で照合します。一致すると画面とメールでお知らせし、公表主体の原文へのリンクを添えます。</p>
+            <ul class="facts">
+              <li>関東1都5県と静岡・長野・山梨・新潟・福島の公表を収録</li>
+              <li>委託先を50件まで登録して自動照合</li>
+              <li>一致した処分は画面とメールで通知</li>
+              <li>担当者の追加と権限管理に対応</li>
+            </ul>
+            <div class="svc-foot">
+              <a class="btn" href="https://sanpai-watch.jp" target="_blank" rel="noopener">産廃ウォッチのサイトへ</a>
+              <span class="price">月額10,780円(税込) / 初回30日間無料</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>サービスづくりの考え方</h2>
+        <p>現場の担当者が無理なく続けられることを、機能の多さより優先しています。</p>
+      </div>
+      <div class="approach">
+        <div>
+          <h3>手間を増やさない</h3>
+          <p>記録や確認のための作業そのものが負担にならないよう、入力は短く、通知は必要なときだけに絞っています。</p>
+        </div>
+        <div>
+          <h3>根拠をたどれる</h3>
+          <p>表示する情報には出典や記録元を残します。判断の材料をお届けし、判断そのものは利用者に委ねます。</p>
+        </div>
+        <div>
+          <h3>人を責めるためには使わない</h3>
+          <p>記録は事故やトラブルを防ぐためのものです。個人の評価や処分の道具にしない設計を守ります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="media">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>メディア掲載</h2>
+        <p>運営サービスが取り上げられた記事です。</p>
+      </div>
+      <ul class="media-list">
+        <li class="media-item">
+          <span class="media-date">2026-09-15</span>
+          <div class="media-body">
+            <div class="media-outlet">物流ニッポン</div>
+            <p class="media-title"><a href="https://www.logistics.jp/article/tech-service/item_S005965" target="_blank" rel="noopener">SafeDrive AI の取材記事(Web版)</a></p>
+          </div>
+        </li>
+        <li class="media-item">
+          <span class="media-date">2026-08-05</span>
+          <div class="media-body">
+            <div class="media-outlet">PRESSNOW</div>
+            <p class="media-title"><a href="https://pressnow.jp/2026/08/05/safedrive-ai/" target="_blank" rel="noopener">SafeDrive AI、30日間無料トライアルを開始</a></p>
+          </div>
+        </li>
+        <li class="media-item">
+          <span class="media-date">2026-08-05</span>
+          <div class="media-body">
+            <div class="media-outlet">ぷれりり</div>
+            <p class="media-title"><a href="https://www.prerele.com/releases/detail/52918" target="_blank" rel="noopener">「点呼で言えないヒヤリ」を拾う運送会社向けAI安全管理SaaS「SafeDrive AI」が30日間無料トライアルを開始</a></p>
+          </div>
+        </li>
+      </ul>
+      <p class="media-note">PRESSNOW・ぷれりりはプレスリリース配信サービスへの掲載です。</p>
+    </div>
+  </section>
+
+  <section id="company">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>事業者情報</h2>
+        <p>各サービスの料金・解約条件は、それぞれのサイトの特定商取引法に基づく表記をご覧ください。</p>
+      </div>
+      <table class="info">
+        <tbody>
+          <tr><th scope="row">屋号</th><td>REAL JAPAN(リアルジャパン)</td></tr>
+          <tr><th scope="row">事業形態</th><td>個人事業</td></tr>
+          <tr><th scope="row">代表</th><td>上原 勉</td></tr>
+          <tr><th scope="row">所在地</th><td>〒150-0043 東京都渋谷区道玄坂1-10-8 渋谷道玄坂東急ビル 2F-C</td></tr>
+          <tr><th scope="row">事業内容</th><td>業務用ウェブサービスの企画・開発・運営</td></tr>
+          <tr><th scope="row">運営サービス</th><td>SafeDrive AI(safedrive-ai.jp)<br>産廃ウォッチ(sanpai-watch.jp)</td></tr>
+          <tr><th scope="row">お問い合わせ</th><td>SafeDrive AI について:info@safedrive-ai.jp<br>産廃ウォッチについて:info@sanpai-watch.jp<br><span style="color: var(--muted); font-size: 13px;">受付:平日 9:00〜18:00</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 REAL JAPAN</span>
+    <span>SafeDrive AI / 産廃ウォッチ</span>
+  </div>
+</footer>
+</body>
+</html>
